@@ -1,0 +1,6 @@
+SYSTEM_INCLUDES=math.h stdlib.h string.h
+C_MD5_SUM=6p9UJoSocEV1VvlPnFsUdw
+INCLUDES=hash_table.h prime.h
+SIGNATURE=1702420182,4345
+LIBS=
+END=

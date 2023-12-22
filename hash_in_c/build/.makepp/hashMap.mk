@@ -1,0 +1,15 @@
+BUILD_SIGNATURE=1703244531,22744
+DEP_SIGS=1690959998,19517281703244531,112321692284737,1141703244531,47921703244531,4144
+INCLUDE_SFXS=lib.la.so.sa.a.sl
+SORTED_DEPS=/usr/bin/gccobj/hash_table.o/usr/lib/libm.soobj/main.oobj/prime.o
+COMMAND=@gcc obj/hash_table.o obj/main.o obj/prime.o -Wall -I. -lm -o build/hashMap@echo "Linking complete!"
+META_DEPS=/usr/bin/gcc
+SIG_METHOD_IMPLICIT=1
+SIGNATURE=1703244531,22744
+CWD=..
+SIG_METHOD_NAME=C
+ARCH=x86_64-linux-thread-multi
+IMPLICIT_TARGETS=build/hashMap
+INCLUDE_PATHS=lib/usr/lib/libin LIBRARY_PATHsys./usr/includeuserin CPATHin :sys
+IMPLICIT_DEPS=obj/hash_table.oobj/main.oobj/prime.oliblibm
+END=
