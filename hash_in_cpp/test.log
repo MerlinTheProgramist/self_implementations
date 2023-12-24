@@ -1,0 +1,1 @@
+' Bit-field ' ' cppreference.com, 2015' ' unsigned char b2 : 6; // 6 bits for b2' ' unsigned char b3 : 2; // 2 bits for b3'

@@ -1,25 +1,29 @@
 #include "hash_table.h"
-#include <assert.h>
-#include <limits.h>
-#include <string.h>
+#include <cassert>
+#include <limits>
+#include <string>
 
 int main(){
-  ht_hash_table* ht = ht_new();
-  ht_insert(ht, "Hello", "World");
-  ht_insert(ht, "Its me", "C lang");
-  ht_insert(ht, "Steven", "Skiena");
-  for(char c=0;c<SCHAR_MAX;++c){
-    char* key = malloc(2);
-    key[0] = c;
-    key[1] = '\0';
-    ht_insert(ht, key, "It's me Marian!");
+  HashTable<std::string, std::string> ht{};
+  ht.insert("Hello", "World");
+  ht.insert("Its me", "C lang");
+  ht.insert("Steven", "Skiena");
+  for(char c=0;c<std::numeric_limits<char>::max();++c){
+    ht.insert(std::string{c}, "It's me Marian!");
   }
 
-  assert(strcmp(ht_get(ht, "Hello"), "World")==0);
-  assert(strcmp(ht_get(ht, "Its me"), "C lang")==0);
-  assert(strcmp(ht_get(ht, "Steven"), "Skiena")==0);
+  assert(*ht.get("Hello")== "World");
+  assert(*ht.get("Its me")== "C lang");
+  assert(*ht.get("Steven")== "Skiena");
+
+  ht.remove("Hello");
+  assert(ht.get("Hello") == nullptr);
+  ht.remove("Its me");
+  assert(ht.get("Its me") == nullptr);
+  ht.remove("Steven");
+  assert(ht.get("Steven") == nullptr);
+
   
-  ht_del_hash_table(ht);
 
   return 0;
 }

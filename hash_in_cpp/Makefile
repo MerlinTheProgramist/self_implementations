@@ -14,39 +14,39 @@
 # project name (generate executable with this name)
 TARGET   = hashMap
 
-CC       = g++
+CC       = g++ 
 # compiling flags here
-CFLAGS   = -std=c++23 -Wall -I. -ggdb
+CFLAGS   = -std=c++17 -Wall -no-pie -ggdb 
 
-LINKER   = g++
+LINKER   = g++ 
 # linking flags here
-LFLAGS   = -Wall -I. -lm
+LFLAGS   = -Wall -no-pie
 
 # change these to proper directories where each file should be
 SRCDIR   = src
 OBJDIR   = obj
 BINDIR   = build
 
-SOURCES  := $(wildcard $(SRCDIR)/*.c)
+SOURCES  := $(wildcard $(SRCDIR)/*.cpp)
 INCLUDES := $(wildcard $(SRCDIR)/*.h)
-OBJECTS  := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+OBJECTS  := $(SOURCES:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 rm       = rm -f
 
 
 $(BINDIR)/$(TARGET): $(OBJECTS)
-    @$(LINKER) $(OBJECTS) $(LFLAGS) -o $@
-    @echo "Linking complete!"
+	@$(LINKER) $(OBJECTS) $(LFLAGS) -o$@
+	@echo "Linking complete!"
 
-$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c
-    @$(CC) $(CFLAGS) -c $< -o $@
-    @echo "Compiled "$<" successfully!"
+$(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "Compiled "$<" successfully!"
 
 .PHONY: clean
 clean:
-    @$(rm) $(OBJECTS)
-    @echo "Cleanup complete!"
+	@$(rm) $(OBJECTS)
+	@echo "Cleanup complete!"
 
 .PHONY: remove
 remove: clean
-    @$(rm) $(BINDIR)/$(TARGET)
-    @echo "Executable removed!"
+	@$(rm) $(BINDIR)/$(TARGET)
+	@echo "Executable removed!"
