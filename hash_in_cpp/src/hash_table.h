@@ -129,10 +129,7 @@ private:
       if(item!=nullptr && item!=&DELETED_ITEM)
         items_vec.push_back(item);
 
-    this->base_size = base_size;
-    this->size = next_prime(base_size);
-    this->items = std::vector<Item*>(size,nullptr);
-    // count stays the same
+    *this = HashTable(base_size);
 
     // reinsert all items 
     for(Item* item : items_vec){
